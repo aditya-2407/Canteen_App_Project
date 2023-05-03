@@ -1,0 +1,45 @@
+<resources>
+    <string name="app_name">Canteen Application</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
+    <string name="veg">Veg</string>
+    <string name="non_veg">Non Veg</string>
+    <string name="todo">TODO</string>
+    <string name="snacks">Snacks</string>
+    <string name="drinks">Drinks</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hi">Hi</string>
+    <string name="view_order_status">View Order Status</string>
+    <string name="make_new_order">Make new order</string>
+    <string name="order_current_meal">Order Current Meal</string>
+    <string name="view_previous_orders">view previous orders</string>
+    <string name="edit_your_profile">edit your profile</string>
+    <string name="remove">REMOVE</string>
+    <string name="add">ADD</string>
+    <string name="qty_added">Qty added:</string>
+    <string name="proceed_to_order">Proceed to Order</string>
+    <string name="add_items_to_cart">Add Items To Cart</string>
+    <string name="nt_pr">nt_pr</string>
+    <string name="net_price">Net Price:</string>
+    <string name="serv">serv</string>
+    <string name="servings_ordered">Servings ordered:</string>
+    <string name="qty">qty</string>
+    <string name="qty_per_serving">Qty per serving:</string>
+    <string name="price">price</string>
+    <string name="pricePer">Price:</string>
+    <string name="product_type">Product Type</string>
+    <string name="product_name">Product Name</string>
+    <string name="did_we_get_your_order_right">Did we get your order right?</string>
+    <string name="productName">Product Name</string>
+    <string name="price2">Price</string>
+    <string name="total_price">Total Price:</string>
+    <string name="_0">0</string>
+</resources>

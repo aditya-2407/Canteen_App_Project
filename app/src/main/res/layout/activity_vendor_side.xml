@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Vendor.Vendor_Side">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg8"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingLeft="30dp"
+        android:paddingTop ="30dp"
+        android:paddingRight="30dp"
+        android:paddingBottom="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/welcome_vendor"
+            android:text="Wecome {Vendor Name}"
+            android:layout_gravity="center"
+            android:textSize="35sp"
+            android:layout_marginBottom="10sp"
+            android:fontFamily="@font/oswald_regular"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="You can perform the following actions:"
+            android:layout_gravity="center"
+            android:textSize="25sp"
+            android:layout_marginBottom="15sp"
+            android:fontFamily="@font/oswald_regular">
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <Button
+                    android:id="@+id/add_product"
+                    android:layout_gravity="center"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FCFAF0"
+                    android:fontFamily="@font/oswald_regular"
+                    android:text="Add Product" />
+
+            <Button
+                android:id="@+id/view_menu"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#FCFAF0"
+                android:fontFamily="@font/oswald_regular"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
+                android:text="View Menu" />
+
+            <Button
+                android:id="@+id/update_product"
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#FCFAF0"
+                android:fontFamily="@font/oswald_regular"
+                android:text="Update Details" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

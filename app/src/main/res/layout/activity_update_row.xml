@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:id="@+id/prod_name_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="Product Name"
+                android:textAlignment="center"
+                android:textColor="@color/purple_500"
+                android:textColorHint="#000"
+                android:textSize="25dp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/prod_price_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:text="Price"
+                android:textAlignment="center"
+                android:textColor="@color/purple_500"
+                android:textColorHint="#000"
+                android:textSize="10dp"
+                android:textStyle="bold|italic" />
+
+            <TextView
+                android:id="@+id/prod_qty_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15dp"
+                android:text="Qty"
+                android:textAlignment="center"
+                android:textColor="@color/purple_500"
+                android:textColorHint="#000"
+                android:textSize="10dp"
+                android:textStyle="bold|italic" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="right"
+            >
+
+            <EditText
+                android:id="@+id/prod_qty_fld"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="10dp"
+                android:hint="Qty"
+                android:padding="5dp"
+                android:textAlignment="center"
+                android:textColorHint="#000"
+                android:background="@drawable/search_view_bg"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/prod_price_fld"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="40dp"
+                android:layout_marginTop="10dp"
+                android:hint="Price"
+                android:padding="5dp"
+                android:textAlignment="center"
+                android:textColorHint="#000"
+                android:background="@drawable/search_view_bg"
+                android:textStyle="italic" />
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="10dp"
+
+            android:text="----------------------------------------------------------------------------------------------">
+
+        </TextView>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

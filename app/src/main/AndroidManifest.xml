@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CanteenApplication"
+        tools:targetApi="31">
+        <activity
+            android:name=".Vendor.View_Menu"
+            android:exported="false" />
+        <activity
+            android:name=".Customer.OrderFinalise"
+            android:exported="false" />
+        <activity
+            android:name=".Reg_Login.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".splash"
+            android:exported="false" />
+        <activity
+            android:name=".Payment"
+            android:exported="false" />
+        <activity
+            android:name=".Vendor.Update_Product"
+            android:exported="false" />
+        <activity
+            android:name=".Vendor.Add_Product"
+            android:exported="false" />
+        <activity
+            android:name=".Vendor.Vendor_Side"
+            android:exported="false" />
+        <activity
+            android:name=".Customer.Dashboard"
+            android:exported="false" />
+        <activity
+            android:name=".Customer.Menu"
+            android:exported="false" />
+        <activity
+            android:name=".Reg_Login.Vendor_Registration"
+            android:exported="false" />
+        <activity
+            android:name=".Reg_Login.Log_In"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name=".ui.login.LoginActivity" -->
+        <!-- android:exported="false" -->
+        <!-- android:label="@string/title_activity_login" /> -->
+        <activity
+            android:name=".startingOfApp"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- <activity -->
+        <!-- android:name=".Payment" -->
+        <!-- android:exported="true"> -->
+        <!-- <intent-filter> -->
+        <!-- <action android:name="android.intent.action.MAIN" /> -->
+        <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+        <!-- </intent-filter> -->
+        <!-- </activity> -->
+        <receiver
+            android:name="com.razorpay.RzpTokenReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="rzp.device_token.share" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.razorpay.CheckoutActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:theme="@style/CheckoutTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <data
+                    android:host="rzp.io"
+                    android:scheme="io.rzp" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

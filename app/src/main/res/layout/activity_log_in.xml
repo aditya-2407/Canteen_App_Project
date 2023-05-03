@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg2"
+    android:paddingTop="50sp"
+    tools:context=".Reg_Login.Log_In"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please Log in here"
+        android:layout_gravity="center"
+        android:textSize="35sp"
+        android:layout_marginTop="20sp"
+        android:fontFamily="@font/oswald_regular"
+        android:textColor="@color/black"/>
+
+    <LinearLayout
+        android:layout_width="375dp"
+        android:layout_height="210dp"
+        android:orientation="vertical"
+        android:layout_marginTop="35sp"
+        android:gravity="center"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/layout_circular"
+        android:layout_gravity="center">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="50sp"
+            android:ems="12"
+            android:id="@+id/Username"
+            android:fontFamily="@font/oswald_regular"
+            android:hint="Username"
+            android:background="@drawable/edittext_circular"
+            android:textAlignment="center"/>
+
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="50sp"
+            android:ems="12"
+            android:id="@+id/Password"
+            android:layout_marginTop="25sp"
+            android:fontFamily="@font/oswald_regular"
+            android:hint="Password"
+            android:background="@drawable/edittext_circular"
+            android:inputType="textPassword"
+            android:textAlignment="center"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30sp"
+        android:orientation="vertical"
+        android:layout_gravity="center">
+
+        <Button
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Log in"
+            android:id="@+id/LogIn"
+            android:textColor="@color/black"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#FCFAF0"
+            android:fontFamily="@font/oswald_regular"/>
+
+        <Button
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="New user ? Register"
+            android:id="@+id/regUser"
+            android:textColor="@color/black"
+            android:backgroundTint="#FCFAF0"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/oswald_regular"/>
+
+    </LinearLayout>
+
+</LinearLayout>
