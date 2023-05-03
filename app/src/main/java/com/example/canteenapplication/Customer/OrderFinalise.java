@@ -47,7 +47,7 @@ public class OrderFinalise extends AppCompatActivity {
         setContentView(R.layout.activity_order);
 
         Intent intent = getIntent();
-        Integer CustomerID = intent.getIntExtra("CustomerID", 0);
+        String CustomerID = intent.getStringExtra("CustomerID");
 
         changeOrder = findViewById(R.id.changeOrder);
         headToPayment = findViewById(R.id.headToPayment);
@@ -138,6 +138,7 @@ public class OrderFinalise extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ipay.putExtra("amount",totalAmount);
+                ipay.putExtra("CustomerID",CustomerID);
                 startActivity(ipay);
             }
         });

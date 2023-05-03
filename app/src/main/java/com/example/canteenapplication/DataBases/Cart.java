@@ -1,7 +1,7 @@
 package com.example.canteenapplication.DataBases;
 
 public class Cart {
-    Integer customerID;
+    String customerID;
     String cartID;
     Integer productQuantity;
     String productID;
@@ -9,7 +9,7 @@ public class Cart {
     public Cart() {
     }
 
-    public Cart(String cartID, Integer customerID, String productID, Integer productQuantity) {
+    public Cart(String cartID, String customerID, String productID, Integer productQuantity) {
         this.cartID = cartID;
         this.customerID = customerID;
         this.productID = productID;
@@ -20,7 +20,7 @@ public class Cart {
         return cartID;
     }
 
-    public Integer getCustomerID() {
+    public String getCustomerID() {
         return customerID;
     }
 

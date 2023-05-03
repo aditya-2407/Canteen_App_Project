@@ -27,7 +27,7 @@ import java.util.List;
 public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.ViewHolder>{
 
     List<Product> prod_list;
-    static Integer CustomerID = 0;
+    static String CustomerID = null;
 
     static DatabaseReference databaseCarts;
     static DatabaseReference databaseProducts;
@@ -73,11 +73,11 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.ViewHolder>{
         notifyDataSetChanged();
     }
 
-    public void setCustomerID(Integer customerID) {
+    public void setCustomerID(String customerID) {
         CustomerID = customerID;
     }
 
-    public Integer getCustomerID() {
+    public String getCustomerID() {
         return CustomerID;
     }
 

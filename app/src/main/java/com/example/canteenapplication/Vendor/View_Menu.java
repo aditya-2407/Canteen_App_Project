@@ -53,7 +53,7 @@ public class View_Menu extends AppCompatActivity {
         setContentView(R.layout.activity_view_menu);
 
         Intent intent = getIntent();
-        Integer CustomerID = intent.getIntExtra("CustomerID", 0);
+        String CustomerID = intent.getStringExtra("CustomerID");
 
         Prod_List = new ArrayList<>();
         databaseProducts = FirebaseDatabase.getInstance().getReference("Products");

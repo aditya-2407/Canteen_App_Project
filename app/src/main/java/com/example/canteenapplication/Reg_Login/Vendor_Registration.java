@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.canteenapplication.Customer.user;
-import com.example.canteenapplication.DataBases.LogIn_Database;
 import com.example.canteenapplication.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -56,8 +55,6 @@ public class Vendor_Registration extends AppCompatActivity {
 
         VendorRef = FirebaseDatabase.getInstance().getReference("Vendors");
 
-        LogIn_Database db = new LogIn_Database(this);
-
         SignUp_Button.setOnClickListener(v -> {
             Username = Username_Box.getText().toString();
             Phone = Phone_Box.getText().toString();
@@ -73,7 +70,7 @@ public class Vendor_Registration extends AppCompatActivity {
                 // Insert the data into the database
                 String id = VendorRef.push().getKey();
                 VendorRef.child(id).setValue(new vendor(id, Username, Phone, Password));
-                db.insertData(Username, Phone, Password, "Vendor");
+//                db.insertData(Username, Phone, Password, "Vendor");
                 Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show();
 
                 // Print the values of the text boxes

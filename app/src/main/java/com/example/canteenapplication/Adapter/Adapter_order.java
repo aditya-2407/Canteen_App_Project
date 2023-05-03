@@ -24,13 +24,13 @@ public class Adapter_order extends RecyclerView.Adapter<Adapter_order.ViewHolder
 
     static DatabaseReference databaseCarts;
     static DatabaseReference databaseProducts;
-    static Integer CustomerID = 0;
+    static String CustomerID = null;
 
     List<Cart> cart_list;
 
     public Adapter_order(List<Cart> cart_list) { this.cart_list = cart_list; }
 
-    public void setCustomerID(Integer customerID) { CustomerID = customerID; }
+    public void setCustomerID(String customerID) { CustomerID = customerID; }
 
     @NonNull
     @Override
@@ -45,7 +45,7 @@ public class Adapter_order extends RecyclerView.Adapter<Adapter_order.ViewHolder
         databaseProducts = FirebaseDatabase.getInstance().getReference("Products");
 
         String cartID = cart_list.get(position).getCartID();
-        Integer customerID = cart_list.get(position).getCustomerID();
+        String customerID = cart_list.get(position).getCustomerID();
         String productID = cart_list.get(position).getProductID();
         Integer productQuantity = cart_list.get(position).getProductQuantity();
 
@@ -72,7 +72,7 @@ public class Adapter_order extends RecyclerView.Adapter<Adapter_order.ViewHolder
             netPriceCart = itemView.findViewById(R.id.netPriceCart);
         }
 
-        public void setData(String cartID, Integer customerID, String productID, Integer productQuantity) {
+        public void setData(String cartID, String customerID, String productID, Integer productQuantity) {
 
             // Fetch product from databaseProducts where productID = productID
             databaseProducts.addValueEventListener(new com.google.firebase.database.ValueEventListener() {

@@ -11,7 +11,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.canteenapplication.Customer.user;
-import com.example.canteenapplication.DataBases.LogIn_Database;
 import com.example.canteenapplication.DataBases.Product;
 import com.example.canteenapplication.R;
 import com.google.firebase.database.DatabaseReference;
@@ -50,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
         SignUp_Button = findViewById(R.id.SignUp);
 
-        LogIn_Database db = new LogIn_Database(this);
-
         CustomerRef = FirebaseDatabase.getInstance().getReference("Customers");
 
         SignUp_Button.setOnClickListener(v -> {
@@ -69,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 // Insert the data into the database
                 String id = CustomerRef.push().getKey();
                 CustomerRef.child(id).setValue(new user(id, Username, Phone, Password));
-                db.insertData(Username, Phone, Password, "Customer");
+//                db.insertData(Username, Phone, Password, "Customer");
                 Toast.makeText(this, "Account created successfully", Toast.LENGTH_SHORT).show();
 
                 // Print the values of the text boxes

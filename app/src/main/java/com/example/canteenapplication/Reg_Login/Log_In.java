@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +14,6 @@ import android.widget.Toast;
 import com.example.canteenapplication.Customer.Dashboard;
 import com.example.canteenapplication.Customer.Menu;
 import com.example.canteenapplication.Customer.user;
-import com.example.canteenapplication.DataBases.LogIn_Database;
 import com.example.canteenapplication.R;
 import com.example.canteenapplication.Vendor.Vendor_Side;
 import com.google.firebase.database.DataSnapshot;
@@ -87,8 +87,6 @@ public class Log_In extends AppCompatActivity {
             DatabaseReference Customref = FirebaseDatabase.getInstance().getReference("Customers");
             DatabaseReference Vendorref = FirebaseDatabase.getInstance().getReference("Vendors");
 
-            LogIn_Database db = new LogIn_Database(this);
-
             if(choice == 1){
                 Customref.addValueEventListener(new ValueEventListener() {
                     @Override
@@ -98,15 +96,13 @@ public class Log_In extends AppCompatActivity {
                             user user = dataSnapshot.getValue(user.class);
                             if(user.getName().equals(Username) && user.getPassword().equals(Password)){
                                 exists = true;
+                                Intent intent = new Intent(Log_In.this, Dashboard.class);
+                                intent.putExtra("CustomerID", user.getId());
+                                startActivity(intent);
                                 break;
                             }
                         }
-                        if(exists){
-                            Intent intent = new Intent(Log_In.this, Dashboard.class);
-                            intent.putExtra("CustomerID", db.getCustomerID(Username));
-                            startActivity(intent);
-                        }
-                        else{
+                        if(!exists){
                             Toast.makeText(Log_In.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -126,15 +122,13 @@ public class Log_In extends AppCompatActivity {
                             vendor vendor = dataSnapshot.getValue(vendor.class);
                             if(vendor.getName().equals(Username) && vendor.getPassword().equals(Password)){
                                 exists = true;
+                                Intent intent = new Intent(Log_In.this, Vendor_Side.class);
+                                intent.putExtra("VendorID", vendor.getId());
+                                startActivity(intent);
                                 break;
                             }
                         }
-                        if(exists){
-                            Intent intent = new Intent(Log_In.this, Vendor_Side.class);
-                            intent.putExtra("VendorID", Username);
-                            startActivity(intent);
-                        }
-                        else{
+                        if(!exists){
                             Toast.makeText(Log_In.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                         }
                     }

@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.canteenapplication.R;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class Vendor_Side extends AppCompatActivity {
 
@@ -26,9 +28,21 @@ public class Vendor_Side extends AppCompatActivity {
         vendor_id = findViewById(R.id.welcome_vendor);
 
         Intent i1 = getIntent();
-        String username = i1.getStringExtra("VendorID");
+        String vendorID = i1.getStringExtra("VendorID");
 
-        vendor_id.setText("Welcome " + username);
+        DatabaseReference VendorRef = FirebaseDatabase.getInstance().getReference("Vendors").child(vendorID);
+//        Get the username from the database with id = vendorID
+        VendorRef.get().addOnCompleteListener(task -> {
+            if (!task.isSuccessful()) {
+                // Error
+            } else {
+                String username = String.valueOf(task.getResult().child("name").getValue());
+                vendor_id.setText("Welcome " + username);
+            }
+        });
+
+
+//        vendor_id.setText("Welcome " + username);
 
         add_product.setOnClickListener(v -> {
 
