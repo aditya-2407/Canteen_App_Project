@@ -15,6 +15,9 @@
         android:theme="@style/Theme.CanteenApplication"
         tools:targetApi="31">
         <activity
+            android:name=".Current_Orders"
+            android:exported="false" />
+        <activity
             android:name=".Vendor.View_Menu"
             android:exported="false" />
         <activity

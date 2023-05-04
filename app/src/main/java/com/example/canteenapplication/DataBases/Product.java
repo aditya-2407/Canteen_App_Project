@@ -22,7 +22,7 @@ public class Product {
     }
 
     public String getId() {
-        System.out.println("Id: " + Id);
+//        System.out.println("Id: " + Id);
         return Id;
     }
 

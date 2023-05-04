@@ -1,12 +1,12 @@
 package com.example.canteenapplication.DataBases;
 
 public class Order {
-    String OrderID;
-    String CustomerID;
-    String OrderStatus;
-    String OrderDate;
-    String OrderTime;
-    Integer OrderTotalPrice;
+    public String OrderID;
+    public String CustomerID;
+    public String OrderStatus;
+    public String OrderDate;
+    public String OrderTime;
+    public Integer OrderTotalPrice;
 
     public Order(){}
 
@@ -19,28 +19,28 @@ public class Order {
         this.OrderTotalPrice = OrderTotalPrice;
     }
 
-    public String getOrderID(){
-        return OrderID;
-    }
+//    public String getOrderID(){
+//        return OrderID;
+//    }
 
-    public String getCustomerID(){
-        return CustomerID;
-    }
-
-    public String getOrderStatus(){
-        return OrderStatus;
-    }
-
-    public String getOrderDate(){
-        return OrderDate;
-    }
-
-    public String getOrderTime(){
-        return OrderTime;
-    }
-
-    public Integer getOrderTotalPrice(){
-        return OrderTotalPrice;
-    }
+//    public String getCustomerID(){
+//        return CustomerID;
+//    }
+//
+//    public String getOrderStatus(){
+//        return OrderStatus;
+//    }
+//
+//    public String getOrderDate(){
+//        return OrderDate;
+//    }
+//
+//    public String getOrderTime(){
+//        return OrderTime;
+//    }
+//
+//    public Integer getOrderTotalPrice(){
+//        return OrderTotalPrice;
+//    }
 
 }

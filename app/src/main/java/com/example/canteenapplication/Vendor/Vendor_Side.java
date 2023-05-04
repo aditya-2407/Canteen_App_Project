@@ -7,13 +7,14 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.canteenapplication.Current_Orders;
 import com.example.canteenapplication.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class Vendor_Side extends AppCompatActivity {
 
-    Button add_product, update_product, view_menu;
+    Button add_product, update_product, view_menu, orders;
 
     TextView vendor_id;
 
@@ -26,6 +27,8 @@ public class Vendor_Side extends AppCompatActivity {
         update_product = findViewById(R.id.update_product);
         view_menu = findViewById(R.id.view_menu);
         vendor_id = findViewById(R.id.welcome_vendor);
+        orders = findViewById(R.id.orders);
+
 
         Intent i1 = getIntent();
         String vendorID = i1.getStringExtra("VendorID");
@@ -63,6 +66,11 @@ public class Vendor_Side extends AppCompatActivity {
             Intent intent = new Intent(Vendor_Side.this, View_Menu.class);
             startActivity(intent);
 
+        });
+
+        orders.setOnClickListener(v -> {
+            Intent intent = new Intent(Vendor_Side.this, Current_Orders.class);
+            startActivity(intent);
         });
     }
 }
