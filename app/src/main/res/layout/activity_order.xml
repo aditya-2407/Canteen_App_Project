@@ -1,39 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg2"
     tools:context=".Customer.OrderFinalise">
-
-
-    <TextView
-        android:id="@+id/textView13"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/did_we_get_your_order_right"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/orderRecyclerView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" >
-
-    </androidx.recyclerview.widget.RecyclerView>
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:gravity="center">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:src="@drawable/chef"/>
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/oswald_regular"
+                android:text="@string/did_we_get_your_order_right"
+                android:textSize="20dp"
+                android:textStyle="italic"
+                android:textColor="#9E7BFF"/>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/orderRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" >
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         app:layout_constraintTop_toBottomOf="@id/orderRecyclerView"
         app:layout_constraintBottom_toTopOf="@id/changeOrder">
 
@@ -42,19 +65,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/oswald_regular"
+            android:textSize="20dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/totalPrice"
             android:text="@string/total_price"
+            android:textColor="#86608E"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            />
+            android:layout_marginBottom="5dp"/>
 
         <TextView
             android:id="@+id/totalPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="@font/oswald_regular"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:textColor="#86608E"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView14"
@@ -64,23 +93,42 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/changeOrder"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Change Order"
-        app:layout_constraintBaseline_toBaselineOf="@+id/headToPayment"
-        app:layout_constraintEnd_toStartOf="@+id/headToPayment"
-        app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
-        android:id="@+id/headToPayment"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:text="Head to Payment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/changeOrder"
-        app:layout_constraintTop_toBottomOf="@+id/orderRecyclerView" />
+        android:layout_marginTop="5dp"
+        android:orientation="vertical"
+        android:gravity="center">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:id="@+id/headToPayment"
+            android:layout_width="210sp"
+            android:layout_height="wrap_content"
+            android:text="Head to Payment"
+            android:backgroundTint="#86608E"
+            android:textColor="@color/white"
+            android:fontFamily="@font/oswald_regular"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/changeOrder"
+            app:layout_constraintTop_toBottomOf="@+id/orderRecyclerView" />
+
+        <Button
+            android:id="@+id/changeOrder"
+            android:layout_width="210sp"
+            android:layout_height="wrap_content"
+            android:text="Change Order"
+            android:backgroundTint="#86608E"
+            android:textColor="@color/white"
+            android:fontFamily="@font/oswald_regular"
+            app:layout_constraintBaseline_toBaselineOf="@+id/headToPayment"
+            app:layout_constraintEnd_toStartOf="@+id/headToPayment"
+            app:layout_constraintStart_toStartOf="parent" />
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

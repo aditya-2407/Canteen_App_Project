@@ -72,7 +72,7 @@ public class OrderFinalise extends AppCompatActivity {
                                     assert product != null;
                                     if (Objects.equals(product.getId(), cart.getProductID())) {
                                         totalPriceInt[0] += Integer.parseInt(product.getProduct_Price()) * cart.getProductQuantity();
-                                        totalPrice.setText("Total Price: " + totalPriceInt[0]);
+                                        totalPrice.setText(" "+totalPriceInt[0]);
                                         totalAmount = totalPriceInt[0];
                                     }
                                 }
