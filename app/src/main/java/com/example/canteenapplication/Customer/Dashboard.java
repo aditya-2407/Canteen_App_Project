@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.canteenapplication.HealthGPT;
 import com.example.canteenapplication.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -16,7 +17,7 @@ import com.google.firebase.ktx.Firebase;
 
 public class Dashboard extends AppCompatActivity {
 
-    Button orderStatus, newOrder, currentMeal, prevOrders, editProfile;
+    Button orderStatus, newOrder, currentMeal, prevOrders, editProfile, healthgpt;
     TextView greeting;
 
     @SuppressLint("SetTextI18n")
@@ -46,9 +47,16 @@ public class Dashboard extends AppCompatActivity {
         currentMeal = findViewById(R.id.currentMeal);
         prevOrders = findViewById(R.id.prevOrders);
         editProfile = findViewById(R.id.editProfile);
+        healthgpt = findViewById(R.id.healthgpt);
 
         newOrder.setOnClickListener(v -> {
             Intent intent = new Intent(Dashboard.this, Menu.class);
+            intent.putExtra("CustomerID", CustomerID);
+            startActivity(intent);
+        });
+
+        healthgpt.setOnClickListener(v -> {
+            Intent intent = new Intent(Dashboard.this, HealthGPT.class);
             intent.putExtra("CustomerID", CustomerID);
             startActivity(intent);
         });
