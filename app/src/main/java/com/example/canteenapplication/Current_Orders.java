@@ -213,12 +213,12 @@ public class Current_Orders extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Orders.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    String OrderID = dataSnapshot.child("orderID").getValue().toString();
-                    String CustomerID = dataSnapshot.child("customerID").getValue().toString();
-                    String OrderStatus = dataSnapshot.child("orderStatus").getValue().toString();
-                    String OrderDate = dataSnapshot.child("orderDate").getValue().toString();
-                    String OrderTime = dataSnapshot.child("orderTime").getValue().toString();
-                    int TotalPrice = Integer.parseInt(dataSnapshot.child("orderTotalPrice").getValue().toString());
+                    String OrderID = dataSnapshot.child("OrderID").getValue().toString();
+                    String CustomerID = dataSnapshot.child("CustomerID").getValue().toString();
+                    String OrderStatus = dataSnapshot.child("OrderStatus").getValue().toString();
+                    String OrderDate = dataSnapshot.child("OrderDate").getValue().toString();
+                    String OrderTime = dataSnapshot.child("OrderTime").getValue().toString();
+                    int TotalPrice = Integer.parseInt(dataSnapshot.child("OrderTotalPrice").getValue().toString());
 
 
                     // Get the Customer Name from using CustomerID from the Customers Table
