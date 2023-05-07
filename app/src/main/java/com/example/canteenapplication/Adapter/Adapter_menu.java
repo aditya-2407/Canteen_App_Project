@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +35,8 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.ViewHolder>{
 
     static DatabaseReference databaseCarts;
     static DatabaseReference databaseProducts;
+
+    DatabaseReference imageRef;
     String product_id = "";
     int mean_rating = 0;
 
@@ -70,6 +74,18 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.ViewHolder>{
 
                     if (product_name.equals(Product_Name)) {
                         product_id = product_id1;
+
+                        imageRef = FirebaseDatabase.getInstance().getReference("Products").child(product_id);
+                        imageRef.child("url").get().addOnCompleteListener(task -> {
+                            if (!task.isSuccessful()) {
+                                Toast.makeText(holder.itemView.getContext(), "Error getting data", Toast.LENGTH_SHORT).show();
+                            } else {
+                                String url = String.valueOf(task.getResult().getValue());
+
+                                // get image from url
+                                Picasso.get().load(url).into(holder.prod_image);
+                            }
+                        });
                     }
                 }
             }
@@ -149,6 +165,8 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.ViewHolder>{
 
         RatingBar ratingBar;
 
+        ImageView prod_image;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             prod_name = itemView.findViewById(R.id.prod_name);
@@ -158,6 +176,7 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.ViewHolder>{
             remove_from_cart = itemView.findViewById(R.id.removeFromCart);
             qty_item = itemView.findViewById(R.id.qty_item);
             ratingBar = itemView.findViewById(R.id.prod_rating);
+            prod_image = itemView.findViewById(R.id.product_image);
 
             add_to_cart.setOnClickListener(v -> {
                 int qty = Integer.parseInt(qty_item.getText().toString());

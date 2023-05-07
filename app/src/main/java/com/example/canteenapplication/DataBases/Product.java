@@ -2,24 +2,21 @@ package com.example.canteenapplication.DataBases;
 
 import android.widget.EditText;
 
-import java.util.ArrayList;
-
 public class Product {
 
     String Id;
-    String Product_Name, Product_Price, Product_Quantity, Product_Type;
+    String Product_Name, Product_Price, Product_Quantity, Product_Type, url;
 
     EditText prod_quantity_fld;
     EditText prod_price_fld;
 
-    ArrayList<Integer> ratings = new ArrayList<>();
-
-    public Product(String id, String product_Name, String product_Price, String product_Quantity, String product_Type) {
-        Id = id;
-        Product_Name = product_Name;
-        Product_Price = product_Price;
-        Product_Quantity = product_Quantity;
-        Product_Type = product_Type;
+    public Product(String id, String product_Name, String product_Price, String product_Quantity, String product_Type, String url) {
+        this.Id = id;
+        this.Product_Name = product_Name;
+        this.Product_Price = product_Price;
+        this.Product_Quantity = product_Quantity;
+        this.Product_Type = product_Type;
+        this.url = url;
     }
 
     public Product() {
@@ -64,6 +61,14 @@ public class Product {
 
     public void setProduct_Type(String product_Type) {
         Product_Type = product_Type;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public void update_qty(){

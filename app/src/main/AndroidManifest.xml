@@ -15,6 +15,9 @@
         android:theme="@style/Theme.CanteenApplication"
         tools:targetApi="31">
         <activity
+            android:name=".Customer.profile_view"
+            android:exported="false" />
+        <activity
             android:name=".OrderStatus"
             android:exported="false" />
         <activity

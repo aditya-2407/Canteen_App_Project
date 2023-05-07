@@ -72,5 +72,11 @@ public class Dashboard extends AppCompatActivity {
             startActivity(intent);
         });
 
+        editProfile.setOnClickListener(v -> {
+            Intent intent = new Intent(Dashboard.this, profile_view.class);
+            intent.putExtra("CustomerID", CustomerID);
+            startActivity(intent);
+        });
+
     }
 }
