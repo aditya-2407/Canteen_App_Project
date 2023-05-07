@@ -59,7 +59,29 @@ public class Current_Order_Adapter extends RecyclerView.Adapter<Current_Order_Ad
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Mark all the products in the order as Done in the database
+
+                // Remove the Item from the RecyclerView
+                current_order_models.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, current_order_models.size());
+
+                // Change the status of the order to "Ready"
+                DatabaseReference or = FirebaseDatabase.getInstance().getReference("Orders");
+                or.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                            if (dataSnapshot.child("OrderID").getValue().toString().equals(Order_ID)) {
+                                or.child(Order_ID).child("OrderStatus").setValue("Ready");
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
 
 

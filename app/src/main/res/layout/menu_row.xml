@@ -41,7 +41,6 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:padding="1dp"
-                    android:scaleType="centerCrop"
                     tools:srcCompat="@drawable/diet_icon" />
             </androidx.cardview.widget.CardView>
 

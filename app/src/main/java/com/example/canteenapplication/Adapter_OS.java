@@ -105,8 +105,8 @@ public class Adapter_OS extends RecyclerView.Adapter<Adapter_OS.ViewHolder> {
 
             this.cust_name.setText("Name: "+cust_name);
             this.prod_price.setText("Qty: "+qty);
-            this.order_id.setText("ID: "+order_id);
-            this.status.setText("Status: "+status);
+            this.order_id.setText("ID: "+status);
+            this.status.setText("Status: "+order_id);
             this.prod_name.setText("Product: "+prod_name);
             this.time.setText("Time: "+time);
 
