@@ -1,13 +1,14 @@
 package com.example.canteenapplication.Customer;
 
 public class user {
-    String id, name, phone, password;
+    String id, name, phone, password, url;
 
-    public user(String id, String name, String phone, String password) {
+    public user(String id, String name, String phone, String password, String url) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.password = password;
+        this.url = url;
     }
 
     public user() {
@@ -43,5 +44,13 @@ public class user {
 
     public void setPassword(String password) {
             this.password = password;
+    }
+
+    public String getUrl() {
+            return url;
+    }
+
+    public void setUrl(String url) {
+            this.url = url;
     }
 }
