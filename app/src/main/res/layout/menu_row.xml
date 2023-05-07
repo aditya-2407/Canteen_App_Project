@@ -39,8 +39,9 @@
                     android:id="@+id/product_image"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:background="@color/orange"
+                    android:layout_gravity="center"
                     android:padding="1dp"
+                    android:scaleType="centerCrop"
                     tools:srcCompat="@drawable/diet_icon" />
             </androidx.cardview.widget.CardView>
 

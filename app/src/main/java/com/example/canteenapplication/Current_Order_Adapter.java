@@ -1,5 +1,8 @@
 package com.example.canteenapplication;
 
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +21,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Current_Order_Adapter extends RecyclerView.Adapter<Current_Order_Adapter.ViewHolder> {
 
     ArrayList<Order_Struct> current_order_models;
+    String phone;
 
     public Current_Order_Adapter(ArrayList<Order_Struct> orderList) {
         current_order_models = new ArrayList<>(orderList);
@@ -49,6 +54,8 @@ public class Current_Order_Adapter extends RecyclerView.Adapter<Current_Order_Ad
 
         Button btn_done = holder.btn_done;
 
+        String message = "Your order is ready. Please collect it from the canteen.";
+
         btn_done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,6 +64,41 @@ public class Current_Order_Adapter extends RecyclerView.Adapter<Current_Order_Ad
 
 
                 // Broadcast the Notification to the Customer that his order is ready
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Customers");
+                // Get the phone number of the customer
+                databaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                            if (dataSnapshot.child("name").getValue().toString().equals(Customer_Name)) {
+                                phone = dataSnapshot.child("phone").getValue().toString();
+                                System.out.println("Phone: " + phone);
+
+
+
+                                PackageManager packageManager = v.getContext().getPackageManager();
+                                Intent i = new Intent(Intent.ACTION_VIEW);
+
+                                try {
+                                    String url = "https://api.whatsapp.com/send?phone="+ phone +"&text=" + URLEncoder.encode(message, "UTF-8");
+                                    i.setPackage("com.whatsapp");
+                                    i.setData(Uri.parse(url));
+                                    if (i.resolveActivity(packageManager) != null) {
+                                        v.getContext().startActivity(i);
+                                    }
+                                } catch (Exception e){
+                                    e.printStackTrace();
+                                }
+                                break;
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
 
             }
         });

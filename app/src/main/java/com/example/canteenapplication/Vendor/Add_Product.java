@@ -158,6 +158,7 @@ public class Add_Product extends AppCompatActivity {
             String Product_Name = product_name.getText().toString();
             String Product_Price = product_price.getText().toString();
             String Product_Quantity = product_quantity.getText().toString();
+            String type = Product_Type;
 
             if (Product_Name.isEmpty() || Product_Price.isEmpty() || Product_Quantity.isEmpty() || Product_Type.isEmpty()) {
                 Toast.makeText(this, "Please Fill all the Fields", Toast.LENGTH_SHORT).show();
@@ -188,7 +189,8 @@ public class Add_Product extends AppCompatActivity {
                                 public void onSuccess(Uri uri) {
                                     String url = uri.toString();
 
-                                    ProductRef.child(id).setValue(new Product(id, Product_Name, Product_Price, Product_Quantity, Product_Type, url));
+                                    assert id != null;
+                                    ProductRef.child(id).setValue(new Product(id, Product_Name, Product_Price, Product_Quantity, type, url));
                                 }
                             });
 
@@ -220,10 +222,10 @@ public class Add_Product extends AppCompatActivity {
             b = BitmapFactory.decodeResource(getResources(), R.drawable.diet_icon);
             product_image.setImageBitmap(b);
 
-            veg_btn.setBackgroundColor(getResources().getColor(R.color.white));
-            nveg_btn.setBackgroundColor(getResources().getColor(R.color.white));
-            drink_btn.setBackgroundColor(getResources().getColor(R.color.white));
-            snack_btn.setBackgroundColor(getResources().getColor(R.color.white));
+//            veg_btn.setBackgroundColor(getResources().getColor(R.color.white));
+//            nveg_btn.setBackgroundColor(getResources().getColor(R.color.white));
+//            drink_btn.setBackgroundColor(getResources().getColor(R.color.white));
+//            snack_btn.setBackgroundColor(getResources().getColor(R.color.white));
 
             Product_Type = null;
         });
@@ -234,10 +236,10 @@ public class Add_Product extends AppCompatActivity {
             product_price.setText("");
             product_quantity.setText("");
 
-            veg_btn.setBackgroundColor(getResources().getColor(R.color.white));
-            nveg_btn.setBackgroundColor(getResources().getColor(R.color.white));
-            drink_btn.setBackgroundColor(getResources().getColor(R.color.white));
-            snack_btn.setBackgroundColor(getResources().getColor(R.color.white));
+//            veg_btn.setBackgroundColor(getResources().getColor(R.color.white));
+//            nveg_btn.setBackgroundColor(getResources().getColor(R.color.white));
+//            drink_btn.setBackgroundColor(getResources().getColor(R.color.white));
+//            snack_btn.setBackgroundColor(getResources().getColor(R.color.white));
 
             Product_Type = null;
 
