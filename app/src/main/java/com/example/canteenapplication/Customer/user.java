@@ -15,42 +15,42 @@ public class user {
     }
 
     public String getId() {
-            return id;
+        return id;
     }
 
     public void setId(String id) {
-            this.id = id;
+        this.id = id;
     }
 
     public String getName() {
-            return name;
+        return name;
     }
 
     public void setName(String name) {
-            this.name = name;
+        this.name = name;
     }
 
     public String getPhone() {
-            return phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-            this.phone = phone;
+        this.phone = phone;
     }
 
     public String getPassword() {
-            return password;
+        return password;
     }
 
     public void setPassword(String password) {
-            this.password = password;
+        this.password = password;
     }
 
     public String getUrl() {
-            return url;
+        return url;
     }
 
     public void setUrl(String url) {
-            this.url = url;
+        this.url = url;
     }
 }

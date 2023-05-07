@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,7 +23,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.ViewHolder>{
@@ -31,6 +35,10 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.ViewHolder>{
 
     static DatabaseReference databaseCarts;
     static DatabaseReference databaseProducts;
+
+    DatabaseReference imageRef;
+    String product_id = "";
+    int mean_rating = 0;
 
     public Adapter_menu(List<Product> prod_list) {
         this.prod_list = prod_list;
@@ -54,10 +62,80 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.ViewHolder>{
         String Product_Quantity = prod_list.get(position).getProduct_Quantity();
         String Product_Type = prod_list.get(position).getProduct_Type();
 
-//        System.out.println("Product Name: " + Product_Name);
-//        System.out.println("Product Price: " + Product_Price);
-//        System.out.println("Product Quantity: " + Product_Quantity);
-//        System.out.println("Product Type: " + Product_Type);
+
+        // Fetch the Product ID from the Database
+        databaseProducts.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                    String product_name = dataSnapshot.child("product_Name").getValue().toString();
+                    String product_id1 = dataSnapshot.child("id").getValue().toString();
+
+                    if (product_name.equals(Product_Name)) {
+                        product_id = product_id1;
+
+                        imageRef = FirebaseDatabase.getInstance().getReference("Products").child(product_id);
+                        imageRef.child("url").get().addOnCompleteListener(task -> {
+                            if (!task.isSuccessful()) {
+                                Toast.makeText(holder.itemView.getContext(), "Error getting data", Toast.LENGTH_SHORT).show();
+                            } else {
+                                String url = String.valueOf(task.getResult().getValue());
+
+                                // get image from url
+                                Picasso.get().load(url).into(holder.prod_image);
+                            }
+                        });
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
+        System.out.println("Product ID we Retrieved: " + product_id);
+
+        DatabaseReference ratings = FirebaseDatabase.getInstance().getReference("Ratings");
+
+        if (product_id != null) {
+
+//            System.out.println("Inside the if statement");
+            ratings.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+
+                        String product_id1 = dataSnapshot.child("Id").getValue().toString();
+                        String rating = dataSnapshot.child("rating").getValue().toString();
+
+                        System.out.println("Product ID: " + product_id1);
+                        System.out.println("Rating: " + rating);
+
+                        System.out.println("Product ID: " + product_id + " Product ID1: " + product_id1);
+
+                        if (product_id1.equals(product_id)) {
+                            mean_rating += Integer.parseInt(rating);
+                            System.out.println("Mean Rating: " + mean_rating);
+                        }
+                    }
+
+                    holder.ratingBar.setRating(mean_rating);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
+        }
+
+        mean_rating = 0;
+
 
         holder.setData(Product_Name, Product_Price, Product_Quantity);
         holder.loadCart();
@@ -84,6 +162,11 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.ViewHolder>{
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView prod_name, prod_price, prod_quantity, qty_item;
         Button add_to_cart, remove_from_cart;
+
+        RatingBar ratingBar;
+
+        ImageView prod_image;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             prod_name = itemView.findViewById(R.id.prod_name);
@@ -92,6 +175,8 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.ViewHolder>{
             add_to_cart = itemView.findViewById(R.id.addToCart);
             remove_from_cart = itemView.findViewById(R.id.removeFromCart);
             qty_item = itemView.findViewById(R.id.qty_item);
+            ratingBar = itemView.findViewById(R.id.prod_rating);
+            prod_image = itemView.findViewById(R.id.product_image);
 
             add_to_cart.setOnClickListener(v -> {
                 int qty = Integer.parseInt(qty_item.getText().toString());
@@ -124,43 +209,43 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.ViewHolder>{
         public void loadCart(){
 
             databaseProducts.orderByChild("product_Name").equalTo(prod_name.getText().toString())
-                    .addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                Product product = snapshot.getValue(Product.class);
-                                assert product != null;
-                                String prod_id = product.getId();
-                                System.out.println("Product ID: " + prod_id);
-                                databaseCarts.orderByChild("productID").equalTo(prod_id)
-                                        .addListenerForSingleValueEvent(new ValueEventListener() {
-                                            @Override
-                                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                                                    Cart cart = snapshot.getValue(Cart.class);
-                                                    assert cart != null;
-                                                    if (cart.getCustomerID().equals(CustomerID)) {
-                                                        qty_item.setText(String.valueOf(cart.getProductQuantity()));
-                                                        remove_from_cart.setVisibility(View.VISIBLE);
-                                                        break;
-                                                    }
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            Product product = snapshot.getValue(Product.class);
+                            assert product != null;
+                            String prod_id = product.getId();
+//                            System.out.println("Product ID: " + prod_id);
+                            databaseCarts.orderByChild("productID").equalTo(prod_id)
+                                    .addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                                                Cart cart = snapshot.getValue(Cart.class);
+                                                assert cart != null;
+                                                if (cart.getCustomerID().equals(CustomerID)) {
+                                                    qty_item.setText(String.valueOf(cart.getProductQuantity()));
+                                                    remove_from_cart.setVisibility(View.VISIBLE);
+                                                    break;
                                                 }
                                             }
+                                        }
 
-                                            @Override
-                                            public void onCancelled(@NonNull DatabaseError databaseError) {
-                                                Log.d(TAG, "onCancelled: " + databaseError.getMessage());
-                                            }
-                                        });
-                                break;
-                            }
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                                            Log.d(TAG, "onCancelled: " + databaseError.getMessage());
+                                        }
+                                    });
+                            break;
                         }
+                    }
 
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-                            Log.d(TAG, "onCancelled: " + databaseError.getMessage());
-                        }
-                    });
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        Log.d(TAG, "onCancelled: " + databaseError.getMessage());
+                    }
+                });
 
         }
 
@@ -181,7 +266,7 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.ViewHolder>{
                                 Product product = snapshot.getValue(Product.class);
                                 assert product != null;
                                 String prod_id = product.getId();
-                                System.out.println("Product ID: " + prod_id);
+//                                System.out.println("Product ID: " + prod_id);
                                 Cart cart = new Cart(id, CustomerID, prod_id, 1);
                                 assert id != null;
                                 databaseCarts.child(id).setValue(cart);
@@ -208,7 +293,7 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.ViewHolder>{
                                 Product product = snapshot.getValue(Product.class);
                                 assert product != null;
                                 String prod_id = product.getId();
-                                System.out.println("Product ID: " + prod_id);
+//                                System.out.println("Product ID: " + prod_id);
                                 databaseCarts.orderByChild("productID").equalTo(prod_id)
                                         .addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override
@@ -247,7 +332,7 @@ public class Adapter_menu extends RecyclerView.Adapter<Adapter_menu.ViewHolder>{
                                 Product product = snapshot.getValue(Product.class);
                                 assert product != null;
                                 String prod_id = product.getId();
-                                System.out.println("Product ID: " + prod_id);
+//                                System.out.println("Product ID: " + prod_id);
                                 databaseCarts.orderByChild("productID").equalTo(prod_id)
                                         .addListenerForSingleValueEvent(new ValueEventListener() {
                                             @Override

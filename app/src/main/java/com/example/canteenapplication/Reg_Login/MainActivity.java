@@ -20,7 +20,6 @@ import android.widget.Toast;
 import com.example.canteenapplication.Customer.user;
 import com.example.canteenapplication.DataBases.Product;
 import com.example.canteenapplication.R;
-import com.example.canteenapplication.Vendor.Add_Product;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -29,7 +28,6 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
@@ -55,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
     ImageView im;
 
     Bitmap b;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

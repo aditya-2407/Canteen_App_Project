@@ -18,6 +18,12 @@
             android:name=".Customer.profile_view"
             android:exported="false" />
         <activity
+            android:name=".OrderStatus"
+            android:exported="false" />
+        <activity
+            android:name=".Customer.HealthGPT"
+            android:exported="false" />
+        <activity
             android:name=".Current_Orders"
             android:exported="false" />
         <activity
