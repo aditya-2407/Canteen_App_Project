@@ -5,6 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_marginTop="5sp"
+    android:background="@drawable/edittext_circular"
+    android:backgroundTint="#F8F8FF"
     android:layout_height="wrap_content">
 
     <LinearLayout
@@ -41,6 +43,7 @@
                     android:layout_height="60dp"
                     android:background="@color/orange"
                     android:padding="1dp"
+                    android:scaleType="centerCrop"
                     tools:srcCompat="@drawable/diet_icon" />
             </androidx.cardview.widget.CardView>
 
@@ -108,7 +111,6 @@
             </LinearLayout>
 
 
-
         </LinearLayout>
 
 
@@ -117,7 +119,7 @@
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="4dp"
             android:layout_marginStart="5sp"
             android:numStars="5" />
 
@@ -141,8 +143,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FCFAF0"
+                android:textSize="20sp"
                 android:fontFamily="@font/oswald_regular"
-                android:text="@string/add" />
+                android:text="+" />
 
             <Button
                 android:id="@+id/removeFromCart"
@@ -150,7 +153,8 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FCFAF0"
                 android:fontFamily="@font/oswald_regular"
-                android:text="@string/remove"
+                android:text="-"
+                android:textSize="20sp"
                 android:visibility="gone" />
 
         </LinearLayout>
