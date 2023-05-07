@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.canteenapplication.DataBases.Product;
 import com.example.canteenapplication.R;
+import com.example.canteenapplication.Rating;
 import com.example.canteenapplication.Reg_Login.MainActivity;
 import com.example.canteenapplication.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -63,6 +64,8 @@ public class Add_Product extends AppCompatActivity {
 
 
         ProductRef = FirebaseDatabase.getInstance().getReference("Products");
+
+        DatabaseReference ratings = FirebaseDatabase.getInstance().getReference("Ratings");
 
 
         product_name = findViewById(R.id.product_name);
@@ -155,6 +158,9 @@ public class Add_Product extends AppCompatActivity {
             String id = ProductRef.push().getKey();
 
             ProductRef.child(id).setValue(new Product(id, Product_Name, Product_Price, Product_Quantity, Product_Type));
+
+//            ratings.child(id).setValue(new Rating(id));
+
 
             progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading File....");

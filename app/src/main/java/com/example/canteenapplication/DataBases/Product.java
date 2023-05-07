@@ -2,6 +2,8 @@ package com.example.canteenapplication.DataBases;
 
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 public class Product {
 
     String Id;
@@ -9,6 +11,8 @@ public class Product {
 
     EditText prod_quantity_fld;
     EditText prod_price_fld;
+
+    ArrayList<Integer> ratings = new ArrayList<>();
 
     public Product(String id, String product_Name, String product_Price, String product_Quantity, String product_Type) {
         Id = id;

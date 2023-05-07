@@ -3,10 +3,18 @@ package com.example.canteenapplication;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -38,6 +46,32 @@ public class Adapter_OS extends RecyclerView.Adapter<Adapter_OS.ViewHolder> {
 //        holder.setData(cust_name, prod_price, order_id, status);
 
         holder.setData(cust_name, qty, order_id, status, prod_name, time);
+
+        RatingBar ratingBar = holder.ratingBar;
+        Button btn_rate = holder.btn_rate;
+
+
+
+        btn_rate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                System.out.println("Rating: for Position: " + position + " is: " + ratingBar.getRating());
+
+
+
+
+                // Add the Rating to the Product
+
+                DatabaseReference ratings = FirebaseDatabase.getInstance().getReference("Ratings");
+
+                ratings.child(orderList.get(position).ProductID).setValue(new Rating(orderList.get(position).ProductID, (int) ratingBar.getRating(), orderList.get(position).Name));
+
+                // Remove the visibility of the Rating Bar and the Button
+                ratingBar.setVisibility(View.GONE);
+                btn_rate.setVisibility(View.GONE);
+
+            }
+        });
     }
 
     @Override
@@ -49,6 +83,9 @@ public class Adapter_OS extends RecyclerView.Adapter<Adapter_OS.ViewHolder> {
 
         TextView cust_name, prod_price, order_id, status, prod_name, time;
 
+        RatingBar ratingBar;
+        Button btn_rate;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -58,6 +95,9 @@ public class Adapter_OS extends RecyclerView.Adapter<Adapter_OS.ViewHolder> {
             order_id = itemView.findViewById(R.id.order_id);
             status = itemView.findViewById(R.id.status);
             time = itemView.findViewById(R.id.time);
+
+            ratingBar = itemView.findViewById(R.id.ratingBar);
+            btn_rate = itemView.findViewById(R.id.btn_rate);
 
         }
 

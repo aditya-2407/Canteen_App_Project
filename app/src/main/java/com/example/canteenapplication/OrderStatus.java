@@ -85,7 +85,7 @@ public class OrderStatus extends AppCompatActivity {
                                                             st = "Order Prepared";
                                                         }
                                                         System.out.println(Cust_Name + " " + TotalPrice + " " + st + " " + OrderID + " " + ProductName + " " + Time);
-                                                        Orders.add(new OS_Dbase(Cust_Name, Quantity, st, OrderID, ProductName, Time));
+                                                        Orders.add(new OS_Dbase(Cust_Name, Quantity, st, OrderID, ProductName, Time, ProductID));
                                                     }
                                                 }
                                                 recyclerView = findViewById(R.id.order_recycler_view);
