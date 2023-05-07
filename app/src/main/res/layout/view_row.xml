@@ -4,18 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/edittext_circular"
+    android:backgroundTint="#F9F1F0"
+    android:padding="13sp"
     android:orientation="vertical">
 
         <TextView
             android:id="@+id/prod_name"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/oswald_regular"
+            android:textColor="@color/black"
             android:text="@string/productName" />
 
         <TextView
             android:id="@+id/prod_price"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/oswald_regular"
+            android:textColor="@color/black"
             android:text="@string/price2" />
 
         <LinearLayout
@@ -27,13 +34,17 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/oswald_regular"
+                android:textColor="@color/black"
                 android:text="Qty:" />
 
             <TextView
                 android:id="@+id/prod_qty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/oswald_regular"
                 android:layout_weight="1"
+                android:textColor="@color/black"
                 android:text="qty" />
         </LinearLayout>
 
@@ -41,6 +52,9 @@
             android:id="@+id/prod_rating"
             style="?android:attr/ratingBarStyleSmall"
             android:layout_width="wrap_content"
+            android:layout_marginTop="5sp"
             android:layout_height="wrap_content"
+            android:progressTint="#ffe5b4"
             android:numStars="5" />
+
 </LinearLayout>

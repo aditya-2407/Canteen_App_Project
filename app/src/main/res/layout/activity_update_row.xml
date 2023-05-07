@@ -3,6 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/edittext_circular"
+    android:backgroundTint="#EFE7BC"
+    android:padding="8sp"
+    android:layout_marginTop="8sp"
     android:orientation="vertical">
 
     <LinearLayout
@@ -19,38 +23,37 @@
                 android:id="@+id/prod_name_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp"
                 android:text="Product Name"
                 android:textAlignment="center"
-                android:textColor="@color/purple_500"
+                android:textColor="@color/black"
+                android:fontFamily="@font/oswald_regular"
                 android:textColorHint="#000"
                 android:textSize="25dp"
-                android:textStyle="bold|italic" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/prod_price_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="15dp"
                 android:text="Price"
                 android:textAlignment="center"
                 android:textColor="@color/purple_500"
+                android:fontFamily="@font/oswald_regular"
                 android:textColorHint="#000"
-                android:textSize="10dp"
-                android:textStyle="bold|italic" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/prod_qty_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="15dp"
                 android:text="Qty"
                 android:textAlignment="center"
                 android:textColor="@color/purple_500"
+                android:fontFamily="@font/oswald_regular"
                 android:textColorHint="#000"
-                android:textSize="10dp"
-                android:textStyle="bold|italic" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
 
         </LinearLayout>
@@ -59,32 +62,35 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
-            android:gravity="right"
-            >
+            android:gravity="right">
 
             <EditText
                 android:id="@+id/prod_qty_fld"
-                android:layout_width="60dp"
+                android:layout_width="60sp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_marginTop="10dp"
                 android:hint="Qty"
                 android:padding="5dp"
+                android:inputType="number"
                 android:textAlignment="center"
                 android:textColorHint="#000"
+                android:fontFamily="@font/oswald_regular"
                 android:background="@drawable/search_view_bg"
                 android:textStyle="italic" />
 
             <EditText
                 android:id="@+id/prod_price_fld"
-                android:layout_width="60dp"
+                android:layout_width="60sp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="40dp"
                 android:layout_marginTop="10dp"
                 android:hint="Price"
+                android:inputType="number"
                 android:padding="5dp"
                 android:textAlignment="center"
                 android:textColorHint="#000"
+                android:fontFamily="@font/oswald_regular"
                 android:background="@drawable/search_view_bg"
                 android:textStyle="italic" />
 
