@@ -61,8 +61,18 @@ public class Menu extends AppCompatActivity {
             public void onDataChange(@NonNull com.google.firebase.database.DataSnapshot snapshot) {
                 Prod_List.clear();
                 for (com.google.firebase.database.DataSnapshot postSnapshot : snapshot.getChildren()) {
-                    Product product = postSnapshot.getValue(Product.class);
+//                    Product product = postSnapshot.getValue(Product.class);
+//                    Prod_List.add(product);
+                    String id = postSnapshot.child("id").getValue().toString();
+                    String Product_Name = postSnapshot.child("product_Name").getValue().toString();
+                    String Product_Price = postSnapshot.child("product_Price").getValue().toString();
+                    String Product_Quantity = postSnapshot.child("product_Quantity").getValue().toString();
+                    String Product_Type = postSnapshot.child("product_Type").getValue().toString();
+
+                    Product product = new Product(id, Product_Name, Product_Price, Product_Quantity, Product_Type,"https://firebasestorage.googleapis.com/v0/b/canteen-application-555c1.appspot.com/o/user_images%2F-NUrWytUdnnxPbhPG3qv?alt=media&token=2062c847-1774-4415-9d24-21151d016796");
+
                     Prod_List.add(product);
+
                 }
                 adapter_menu = new Adapter_menu(Prod_List);
                 recyclerView.setAdapter(adapter_menu);
@@ -74,6 +84,8 @@ public class Menu extends AppCompatActivity {
                 Log.w(TAG, "Failed to read value.", error.toException());
             }
         });
+
+        System.out.println(Prod_List.size());
 
         searchView = findViewById(R.id.searchView2);
         searchView.clearFocus();
@@ -92,6 +104,7 @@ public class Menu extends AppCompatActivity {
 
 //        listen to veg, non-veg, snacks, drinks switches
         veg.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            System.out.println(Prod_List.size());
             if (isChecked) {
                 List<Product> filterList = new ArrayList<>();
                 for (Product product_structure : Prod_List) {
