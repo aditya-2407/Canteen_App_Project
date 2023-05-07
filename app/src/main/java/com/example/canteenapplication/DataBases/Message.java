@@ -1,4 +1,4 @@
-package com.example.canteenapplication;
+package com.example.canteenapplication.DataBases;
 
 public class Message {
     public static String SENT_BY_ME = "me";

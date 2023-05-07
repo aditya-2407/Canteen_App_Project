@@ -1,4 +1,4 @@
-package com.example.canteenapplication;
+package com.example.canteenapplication.Customer;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.example.canteenapplication.Adapter.MessageAdapter;
+import com.example.canteenapplication.DataBases.Message;
+import com.example.canteenapplication.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -100,7 +104,7 @@ public class HealthGPT extends AppCompatActivity {
         RequestBody body = RequestBody.create(jsonBody.toString(),JSON);
         Request request = new Request.Builder()
                 .url("https://api.openai.com/v1/completions")
-                .header("Authorization","Bearer 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")
+                .header("Authorization","Bearer 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")
                 .post(body)
                 .build();
 

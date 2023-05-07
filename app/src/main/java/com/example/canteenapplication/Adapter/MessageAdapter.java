@@ -1,4 +1,4 @@
-package com.example.canteenapplication;
+package com.example.canteenapplication.Adapter;
 
 
 import android.widget.LinearLayout;
@@ -11,6 +11,9 @@ import java.util.List;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.canteenapplication.DataBases.Message;
+import com.example.canteenapplication.R;
 
 public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.MyViewHolder>{
     List<Message> messageList;

@@ -15,7 +15,10 @@
         android:theme="@style/Theme.CanteenApplication"
         tools:targetApi="31">
         <activity
-            android:name=".HealthGPT"
+            android:name=".OrderStatus"
+            android:exported="false" />
+        <activity
+            android:name=".Customer.HealthGPT"
             android:exported="false" />
         <activity
             android:name=".Current_Orders"

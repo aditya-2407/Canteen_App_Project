@@ -9,16 +9,17 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.canteenapplication.HealthGPT;
+import com.example.canteenapplication.OrderStatus;
 import com.example.canteenapplication.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.ktx.Firebase;
 
 public class Dashboard extends AppCompatActivity {
 
     Button orderStatus, newOrder, currentMeal, prevOrders, editProfile, healthgpt;
     TextView greeting;
+
+    String Cust_Name;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -30,12 +31,15 @@ public class Dashboard extends AppCompatActivity {
         String CustomerID = intent1.getStringExtra("CustomerID");
         Log.d("CustomerID", String.valueOf(CustomerID));
 
+
+
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("Customers");
         ref.child(CustomerID).child("name").get().addOnCompleteListener(task -> {
             if (!task.isSuccessful()) {
                 Log.e("firebase", "Error getting data", task.getException());
             } else {
                 String name = String.valueOf(task.getResult().getValue());
+                Cust_Name = name;
                 Log.d("firebase", String.valueOf(task.getResult().getValue()));
                 greeting.setText("Hey, " + name + "!");
             }
@@ -58,6 +62,13 @@ public class Dashboard extends AppCompatActivity {
         healthgpt.setOnClickListener(v -> {
             Intent intent = new Intent(Dashboard.this, HealthGPT.class);
             intent.putExtra("CustomerID", CustomerID);
+            startActivity(intent);
+        });
+
+        orderStatus.setOnClickListener(v -> {
+            Intent intent = new Intent(Dashboard.this, OrderStatus.class);
+            intent.putExtra("CustomerID", CustomerID);
+            intent.putExtra("Cust_Name", Cust_Name);
             startActivity(intent);
         });
 
