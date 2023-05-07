@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.canteenapplication.Customer.Dashboard;
+import com.example.canteenapplication.Customer.OrderFinalise;
 import com.example.canteenapplication.DataBases.Cart;
 import com.example.canteenapplication.DataBases.Order;
 import com.example.canteenapplication.DataBases.ProductsInOrder;
@@ -29,7 +30,6 @@ import org.json.JSONObject;
 import java.util.Date;
 
 public class Payment extends AppCompatActivity implements PaymentResultListener {
-    TextView paymentStatus;
     int totalprice;
     String CustomerID;
     @Override
@@ -37,7 +37,6 @@ public class Payment extends AppCompatActivity implements PaymentResultListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.test_payment);
 
-        paymentStatus = findViewById(R.id.paymentStatus);
 
         Intent getPay = getIntent();
         totalprice = getPay.getIntExtra("amount",0);
@@ -51,7 +50,7 @@ public class Payment extends AppCompatActivity implements PaymentResultListener 
         JSONObject options = new JSONObject();
         try {
 
-            options.put("name", "Kapil sharma");
+            options.put("name", CustomerID);
             options.put("currency", "INR");
             options.put("amount", totalprice * 100);
             options.put("prefill.email", "customer@example.com");
@@ -70,7 +69,6 @@ public class Payment extends AppCompatActivity implements PaymentResultListener 
     public void onPaymentSuccess(String s) {
         Log.d("Payment success",s);
         Toast.makeText(this, "Payment Success..", Toast.LENGTH_SHORT).show();
-        paymentStatus.setText(s);
 
         DatabaseReference databaseCart = FirebaseDatabase.getInstance().getReference("Carts");
         DatabaseReference databaseOrder = FirebaseDatabase.getInstance().getReference("Orders");
@@ -153,6 +151,8 @@ public class Payment extends AppCompatActivity implements PaymentResultListener 
     public void onPaymentError(int i, String s) {
         Log.d("Payment Failed",s);
         Toast.makeText(this, "Payment Failed..", Toast.LENGTH_SHORT).show();
-        paymentStatus.setText(s);
+        Intent intent = new Intent(Payment.this, OrderFinalise.class);
+        intent.putExtra("CustomerID", CustomerID);
+        startActivity(intent);
     }
 }

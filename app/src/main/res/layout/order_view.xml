@@ -1,35 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@drawable/edittext_circular"
+    android:backgroundTint="#EFE7BC"
+    android:paddingTop="19sp">
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:layout_gravity="center"
+        android:paddingStart="10sp"
+        android:layout_marginBottom="10sp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/cust_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#353643"
+            android:fontFamily="@font/oswald_regular"
             android:text="Customer Name" />
 
         <TextView
             android:id="@+id/prod_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#353643"
+            android:fontFamily="@font/oswald_regular"
             android:text="@string/price2" />
 
         <TextView
             android:id="@+id/order_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="#353643"
+            android:fontFamily="@font/oswald_regular"
             android:text="Order_ID" />
+
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
         android:orientation="vertical">
 
         <LinearLayout
@@ -41,14 +57,19 @@
                 android:id="@+id/btn_done"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="#353643"
+                android:backgroundTint="#A3EBB1"
+                android:background="@drawable/edittext_circular"
+                android:fontFamily="@font/oswald_regular"
                 android:text="Done" />
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-        </LinearLayout>
+        <!--        <LinearLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"-->
+        <!--            android:orientation="horizontal">-->
+        <!--        </LinearLayout>-->
 
     </LinearLayout>
 

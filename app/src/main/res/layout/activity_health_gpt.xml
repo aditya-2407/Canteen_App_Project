@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg5"
     tools:context=".Customer.HealthGPT">
-    
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="18sp"
         android:layout_above="@+id/bottom_layout"/>
 
     <TextView
@@ -17,40 +19,41 @@
         android:layout_height="wrap_content"
         android:id="@+id/welcome_text"
         android:layout_centerInParent="true"
-        android:text="Welcome to Health GPT"
+        android:text="Welcome to Health GPT !"
+        android:fontFamily="@font/oswald_regular"
         android:gravity="center"
-        android:textSize="28dp"
-        />
-    
+        android:textSize="28dp" />
+
     <RelativeLayout
         android:id="@+id/bottom_layout"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
         android:layout_alignParentBottom="true">
 
         <EditText
-            android:layout_width="match_parent"
+            android:layout_width="340sp"
             android:layout_height="wrap_content"
             android:id="@+id/message_edit_text"
             android:layout_centerInParent="true"
             android:hint="Write here "
-            android:padding="16dp"
+            android:padding="12dp"
             android:layout_toLeftOf="@id/send_btn"
-            android:background="@drawable/rounded_corner"
-            />
+            android:textColor="#53565A"
+            android:textStyle="italic"
+            android:fontFamily="@font/oswald_regular"
+            android:background="@drawable/edittext_circular" />
 
         <ImageButton
-            android:layout_width="48dp"
-            android:layout_height="48dp"
+            android:layout_width="48sp"
+            android:layout_height="48sp"
             android:id="@+id/send_btn"
             android:layout_alignParentEnd="true"
             android:layout_centerInParent="true"
-            android:layout_marginStart="10dp"
-            android:padding="8dp"
+            android:layout_marginStart="6sp"
+            android:contentDescription="send"
             android:src="@drawable/baseline_send_24"
-            android:background="?attr/selectableItemBackgroundBorderless"
-
-            />
+            android:background="?attr/selectableItemBackgroundBorderless" />
 
     </RelativeLayout>
 

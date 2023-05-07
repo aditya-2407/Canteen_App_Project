@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/bg2"
     tools:context=".Vendor.Update_Product">
 
     <SearchView
@@ -14,8 +15,7 @@
         android:layout_margin="8dp"
         android:queryHint="Search Here"
         android:iconifiedByDefault="false"
-        android:background="@drawable/search_view_bg"
-        />
+        android:background="@drawable/search_view_bg"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,11 +41,12 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/purple_500"
+            android:background="@drawable/layout_circular"
             android:text="Add Product"
-            android:textColor="@color/white"
+            android:backgroundTint="#c0c0c0"
+            android:fontFamily="@font/oswald_regular"
             android:textSize="13dp"
             android:textStyle="bold" />
 
@@ -55,11 +56,12 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@color/purple_500"
+            android:background="@drawable/layout_circular"
             android:text="Update Product"
-            android:textColor="@color/white"
+            android:backgroundTint="#c0c0c0"
+            android:fontFamily="@font/oswald_regular"
             android:textSize="13dp"
             android:textStyle="bold" />
     </LinearLayout>
