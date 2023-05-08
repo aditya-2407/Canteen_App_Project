@@ -58,17 +58,17 @@
                 android:fontFamily="@font/oswald_regular"
                 android:text="Add Product" />
 
-            <Button
-                android:id="@+id/view_menu"
-                android:layout_gravity="center"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="#FCFAF0"
-                android:fontFamily="@font/oswald_regular"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:text="View Menu" />
+<!--            <Button-->
+<!--                android:id="@+id/view_menu"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:backgroundTint="#FCFAF0"-->
+<!--                android:fontFamily="@font/oswald_regular"-->
+<!--                android:layout_marginRight="5dp"-->
+<!--                android:layout_marginLeft="5dp"-->
+<!--                android:text="View Menu" />-->
 
         </LinearLayout>
 

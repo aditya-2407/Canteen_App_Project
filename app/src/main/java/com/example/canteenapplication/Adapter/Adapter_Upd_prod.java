@@ -5,6 +5,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -13,15 +14,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.canteenapplication.DataBases.Product;
 import com.example.canteenapplication.R;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+
+
 
 public class Adapter_Upd_prod extends RecyclerView.Adapter<Adapter_Upd_prod.ViewHolder> {
 
     private List<Product> update_prod_models;
 
     private List<Product> new_prod_models_full;
+
+    String quantity = "";
+    String price = "";
 
 
     public Adapter_Upd_prod(List<Product> update_prod_models) {
@@ -51,74 +62,119 @@ public class Adapter_Upd_prod extends RecyclerView.Adapter<Adapter_Upd_prod.View
             EditText prod_quantity_fld = holder.prod_quantity_fld;
             EditText prod_price_fld = holder.prod_price_fld;
 
-            String name = update_prod_models.get(position).getProduct_Name();
-            System.out.println("id: " + name);
 
-            System.out.println("Size of new_prod_models_full: " + new_prod_models_full.size());
-
-            if (new_prod_models_full.size() == 0) {
-                new_prod_models_full = new ArrayList<>(update_prod_models);
-            }
-
-            prod_quantity_fld.addTextChangedListener(new TextWatcher() {
+            holder.btn_upd.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                public void onClick(View v) {
                     String new_quantity = prod_quantity_fld.getText().toString().trim();
-
-//                    new_prod_models_full.get(id).setProduct_Quantity(new_quantity);
-//                    // which position is being updated
-//                    Log.d("position", String.valueOf(id));
-
-                    for (int i = 0; i < new_prod_models_full.size(); i++) {
-                        if (new_prod_models_full.get(i).getProduct_Name().equals(name)) {
-                            new_prod_models_full.get(i).setProduct_Quantity(new_quantity);
-                            System.out.println("id: " + name);
-                            System.out.println("new_quantity: " + new_quantity);
-                        }
-                    }
-
-                }
-
-                @Override
-                public void afterTextChanged(Editable s) {
-
-
-                }
-            });
-
-            prod_price_fld.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-                }
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
                     String new_price = prod_price_fld.getText().toString().trim();
 
-//                    new_prod_models_full.get(id).setProduct_Price(new_price);
-//                    // which position is being updated
-//                    Log.d("position", String.valueOf(id));
+                    System.out.println("new_quantity: " + new_quantity);
+                    System.out.println("new_price: " + new_price);
+                    System.out.println("position: " + position);
 
-                    for (int i = 0; i < new_prod_models_full.size(); i++) {
-                        if (new_prod_models_full.get(i).getProduct_Name().equals(name)) {
-                            new_prod_models_full.get(i).setProduct_Price(new_price);
-                            System.out.println("id: " + name);
-                            System.out.println("new_price: " + new_price);
+                    update_prod_models.get(position).setProduct_Quantity(new_quantity);
+                    update_prod_models.get(position).setProduct_Price(new_price);
+
+                    DatabaseReference ProductRef = FirebaseDatabase.getInstance().getReference().child("Products");
+
+                    // Update these values in the database Products table
+
+                    ProductRef.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                                Product product = dataSnapshot.getValue(Product.class);
+                                if (product.getProduct_Name().equals(Product_Name)) {
+                                    String id = dataSnapshot.getKey();
+                                    ProductRef.child(id).child("product_Quantity").setValue(new_quantity);
+                                    ProductRef.child(id).child("product_Price").setValue(new_price);
+                                }
+                            }
                         }
-                    }
-                }
 
-                @Override
-                public void afterTextChanged(Editable s) {
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
 
+                        }
+                    });
                 }
             });
+
+
+
+
+
+//            String name = update_prod_models.get(position).getProduct_Name();
+//            System.out.println("id: " + name);
+//
+//            System.out.println("Size of new_prod_models_full: " + new_prod_models_full.size());
+//
+//            if (new_prod_models_full.size() == 0) {
+//                new_prod_models_full = new ArrayList<>(update_prod_models);
+//            }
+//
+//            prod_quantity_fld.addTextChangedListener(new TextWatcher() {
+//                @Override
+//                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//                }
+//
+//                @Override
+//                public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                    String new_quantity = prod_quantity_fld.getText().toString().trim();
+//
+////                    new_prod_models_full.get(id).setProduct_Quantity(new_quantity);
+////                    // which position is being updated
+////                    Log.d("position", String.valueOf(id));
+//
+//                    for (int i = 0; i < new_prod_models_full.size(); i++) {
+//                        if (new_prod_models_full.get(i).getProduct_Name().equals(name)) {
+//                            new_prod_models_full.get(i).setProduct_Quantity(new_quantity);
+//                            System.out.println("id: " + name);
+//                            System.out.println("new_quantity: " + new_quantity);
+//                        }
+//                    }
+//
+//                }
+//
+//                @Override
+//                public void afterTextChanged(Editable s) {
+//
+//
+//                }
+//            });
+//
+//            prod_price_fld.addTextChangedListener(new TextWatcher() {
+//                @Override
+//                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//
+//                }
+//
+//                @Override
+//                public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                    String new_price = prod_price_fld.getText().toString().trim();
+//
+////                    new_prod_models_full.get(id).setProduct_Price(new_price);
+////                    // which position is being updated
+////                    Log.d("position", String.valueOf(id));
+//
+//                    for (int i = 0; i < new_prod_models_full.size(); i++) {
+//                        if (new_prod_models_full.get(i).getProduct_Name().equals(name)) {
+//                            new_prod_models_full.get(i).setProduct_Price(new_price);
+//                            System.out.println("id: " + name);
+//                            System.out.println("new_price: " + new_price);
+//                        }
+//                    }
+//                }
+//
+//                @Override
+//                public void afterTextChanged(Editable s) {
+//
+//                }
+//            });
+
+
 
     }
 
@@ -140,6 +196,8 @@ public class Adapter_Upd_prod extends RecyclerView.Adapter<Adapter_Upd_prod.View
         EditText prod_quantity_fld;
         EditText prod_price_fld;
 
+        Button btn_upd;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -148,6 +206,7 @@ public class Adapter_Upd_prod extends RecyclerView.Adapter<Adapter_Upd_prod.View
             prod_qty_text = itemView.findViewById(R.id.prod_qty_text);
             prod_quantity_fld = itemView.findViewById(R.id.prod_qty_fld);
             prod_price_fld = itemView.findViewById(R.id.prod_price_fld);
+            btn_upd = itemView.findViewById(R.id.btn_upd);
         }
 
         private void setData(String product_Name, String product_Price, String product_Quantity, String product_Type) {

@@ -48,8 +48,8 @@ public class Dashboard extends AppCompatActivity {
         greeting = findViewById(R.id.greeting);
         orderStatus = findViewById(R.id.orderStatus);
         newOrder = findViewById(R.id.newOrder);
-        currentMeal = findViewById(R.id.currentMeal);
-        prevOrders = findViewById(R.id.prevOrders);
+//        currentMeal = findViewById(R.id.currentMeal);
+//        prevOrders = findViewById(R.id.prevOrders);
         editProfile = findViewById(R.id.editProfile);
         healthgpt = findViewById(R.id.healthgpt);
 

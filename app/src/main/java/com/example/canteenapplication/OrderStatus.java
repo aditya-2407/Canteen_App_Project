@@ -79,10 +79,10 @@ public class OrderStatus extends AppCompatActivity {
 
                                                         String st = "";
                                                         if (OrderStatus.equals("OrderRecorded")) {
-                                                            st = "Preparing";
+                                                            st = "Preparing....";
                                                         }
                                                         else {
-                                                            st = "Order Prepared";
+                                                            st = "Previous Order";
                                                         }
                                                         System.out.println(Cust_Name + " " + TotalPrice + " " + st + " " + OrderID + " " + ProductName + " " + Time);
                                                         Orders.add(new OS_Dbase(Cust_Name, Quantity, st, OrderID, ProductName, Time, ProductID));

@@ -60,6 +60,15 @@ public class Update_Product extends AppCompatActivity {
                 }
 
                 System.out.println(Prod_List.size());
+
+                recyclerView = findViewById(R.id.recyclerView);
+                linearLayoutManager = new LinearLayoutManager(Update_Product.this);
+                linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+                recyclerView.setLayoutManager(linearLayoutManager);
+
+                adapter_upd_prod = new Adapter_Upd_prod(Prod_List);
+                recyclerView.setAdapter(adapter_upd_prod);
+                adapter_upd_prod.notifyDataSetChanged();
             }
 
             @Override
@@ -85,40 +94,6 @@ public class Update_Product extends AppCompatActivity {
             }
         });
 
-        recyclerView = findViewById(R.id.recyclerView);
-        linearLayoutManager = new LinearLayoutManager(this);
-        linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(linearLayoutManager);
-
-        adapter_upd_prod = new Adapter_Upd_prod(Prod_List);
-        recyclerView.setAdapter(adapter_upd_prod);
-        adapter_upd_prod.notifyDataSetChanged();
-
-
-        add_product = findViewById(R.id.add_product);
-        update_product = findViewById(R.id.update_product);
-
-        add_product.setOnClickListener(v -> {
-            Toast.makeText(this, "Add Product", Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(Update_Product.this, Add_Product.class);
-            startActivity(intent);
-        });
-
-        update_product.setOnClickListener(v -> {
-            Toast.makeText(this, "Product has been updated!", Toast.LENGTH_SHORT).show();
-
-            DatabaseReference updateRef = FirebaseDatabase.getInstance().getReference().child("Products");
-
-            List<Product> newprod_list = adapter_upd_prod.getNew_prod_models_full();
-
-            System.out.println(newprod_list.size());
-
-//            for (Product_Structure item : newprod_list) {
-//                System.out.println(item.getId());
-//                updateRef.child(item.getId()).setValue(item);
-//            }
-
-        });
     }
 
     private void getFilter(String newText) {

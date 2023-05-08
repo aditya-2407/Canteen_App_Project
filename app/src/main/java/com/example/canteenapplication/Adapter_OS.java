@@ -50,6 +50,10 @@ public class Adapter_OS extends RecyclerView.Adapter<Adapter_OS.ViewHolder> {
         RatingBar ratingBar = holder.ratingBar;
         Button btn_rate = holder.btn_rate;
 
+        if (status.equals("Preparing....")) {
+            ratingBar.setVisibility(View.GONE);
+            btn_rate.setVisibility(View.GONE);
+        }
 
 
         btn_rate.setOnClickListener(new View.OnClickListener() {
@@ -57,7 +61,9 @@ public class Adapter_OS extends RecyclerView.Adapter<Adapter_OS.ViewHolder> {
             public void onClick(View v) {
                 System.out.println("Rating: for Position: " + position + " is: " + ratingBar.getRating());
 
-
+                // Change the Status of the Order to "Previous Order"
+//                DatabaseReference order = FirebaseDatabase.getInstance().getReference("Orders");
+//                order.child(orderList.get(position).OrderID).child("OrderStatus").setValue("Previous Order");
 
 
                 // Add the Rating to the Product

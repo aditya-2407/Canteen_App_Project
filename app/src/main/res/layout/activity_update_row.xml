@@ -61,58 +61,84 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal"
-            android:gravity="right">
+            android:orientation="vertical"
+            android:gravity="right"
+            >
 
-            <EditText
-                android:id="@+id/prod_qty_fld"
-                android:layout_width="60sp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="10dp"
-                android:layout_marginTop="10dp"
-                android:hint="Qty"
-                android:padding="5dp"
-                android:inputType="number"
-                android:textAlignment="center"
-                android:textColorHint="#000"
-                android:fontFamily="@font/oswald_regular"
-                android:background="@drawable/search_view_bg"
-                android:textStyle="italic" />
+                android:orientation="horizontal"
+                android:gravity="right">
 
-            <EditText
-                android:id="@+id/prod_price_fld"
-                android:layout_width="60sp"
+
+                <EditText
+                    android:id="@+id/prod_qty_fld"
+                    android:layout_width="60sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:hint="Qty"
+                    android:padding="5dp"
+                    android:inputType="number"
+                    android:textAlignment="center"
+                    android:textColorHint="#000"
+                    android:fontFamily="@font/oswald_regular"
+                    android:background="@drawable/search_view_bg"
+                    android:textStyle="italic" />
+
+                <EditText
+                    android:id="@+id/prod_price_fld"
+                    android:layout_width="60sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:hint="Price"
+                    android:inputType="number"
+                    android:padding="5dp"
+                    android:textAlignment="center"
+                    android:textColorHint="#000"
+                    android:fontFamily="@font/oswald_regular"
+                    android:background="@drawable/search_view_bg"
+                    android:textStyle="italic" />
+
+
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_upd"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="40dp"
-                android:layout_marginTop="10dp"
-                android:hint="Price"
-                android:inputType="number"
-                android:padding="5dp"
-                android:textAlignment="center"
-                android:textColorHint="#000"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="30dp"
+                android:textColor="#353643"
+                android:textSize="15sp"
+                android:backgroundTint="#A3EBB1"
+                android:background="@drawable/edittext_circular"
                 android:fontFamily="@font/oswald_regular"
-                android:background="@drawable/search_view_bg"
-                android:textStyle="italic" />
+                android:text="Update" />
 
 
 
         </LinearLayout>
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="10dp"
-
-            android:text="----------------------------------------------------------------------------------------------">
-
-        </TextView>
 
     </LinearLayout>
+
+<!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent">-->
+
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:paddingLeft="10dp"-->
+
+<!--            android:text="&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;">-->
+
+<!--        </TextView>-->
+
+<!--    </LinearLayout>-->
 
 
 

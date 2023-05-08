@@ -77,7 +77,9 @@ public class Current_Orders extends AppCompatActivity {
 
                                     System.out.println(order_struct.OrderID+" "+order_struct.CustomerName+" "+order_struct.ProductPrice);
 
-                                    orderList.add(order_struct);
+                                    if (OrderStatus.equals("OrderRecorded")) {
+                                        orderList.add(order_struct);
+                                    }
                                 }
                             }
 

@@ -15,6 +15,7 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.example.canteenapplication.Adapter.Adapter_menu;
 import com.example.canteenapplication.DataBases.Product;
@@ -39,6 +40,8 @@ public class Menu extends AppCompatActivity {
     Switch veg, non_veg, snacks, drinks;
 
      Button proceedToOrder;
+//     ArrayList<Integer> selectedItems = new ArrayList<>();
+    int total=0;
 
     public static Context getContext() {
         return getContext();
@@ -97,9 +100,38 @@ public class Menu extends AppCompatActivity {
         proceedToOrder = findViewById(R.id.proceedToOrder);
 
         proceedToOrder.setOnClickListener(v -> {
-            Intent intent1 = new Intent(Menu.this, OrderFinalise.class);
-            intent1.putExtra("CustomerID", CustomerID);
-            startActivity(intent1);
+
+            DatabaseReference carts = FirebaseDatabase.getInstance().getReference("Carts");
+            // Check if there any order exist in cart for this customer using CustomerID.
+            carts.addValueEventListener(new com.google.firebase.database.ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull com.google.firebase.database.DataSnapshot snapshot) {
+                    for (com.google.firebase.database.DataSnapshot postSnapshot : snapshot.getChildren()) {
+                        String CustomerID1 = postSnapshot.child("customerID").getValue().toString();
+                        System.out.println(CustomerID1+" "+CustomerID);
+                        if (CustomerID1.equals(CustomerID)) {
+                            total += 1;
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Log.w(TAG, "Failed to read value.", error.toException());
+                }
+            });
+
+            System.out.println(total);
+
+            if (total > 0) {
+                Intent intent1 = new Intent(Menu.this, OrderFinalise.class);
+                intent1.putExtra("CustomerID", CustomerID);
+                startActivity(intent1);
+            }
+            else {
+                Toast.makeText(this, "Please Select the Product!", Toast.LENGTH_SHORT).show();
+            }
+            total = 0;
         });
 
 //        listen to veg, non-veg, snacks, drinks switches

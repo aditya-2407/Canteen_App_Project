@@ -64,25 +64,25 @@
             android:background="@drawable/edittext_circular"
             android:text="@string/add_items_to_cart" />
 
-        <Button
-            android:id="@+id/currentMeal"
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FCF3CF"
-            android:layout_marginBottom="10sp"
-            android:fontFamily="@font/oswald_regular"
-            android:background="@drawable/edittext_circular"
-            android:text="@string/order_current_meal" />
+<!--        <Button-->
+<!--            android:id="@+id/currentMeal"-->
+<!--            android:layout_width="230dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint="#FCF3CF"-->
+<!--            android:layout_marginBottom="10sp"-->
+<!--            android:fontFamily="@font/oswald_regular"-->
+<!--            android:background="@drawable/edittext_circular"-->
+<!--            android:text="@string/order_current_meal" />-->
 
-        <Button
-            android:id="@+id/prevOrders"
-            android:layout_width="230dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#FCF3CF"
-            android:layout_marginBottom="10sp"
-            android:fontFamily="@font/oswald_regular"
-            android:background="@drawable/edittext_circular"
-            android:text="@string/view_previous_orders" />
+<!--        <Button-->
+<!--            android:id="@+id/prevOrders"-->
+<!--            android:layout_width="230dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:backgroundTint="#FCF3CF"-->
+<!--            android:layout_marginBottom="10sp"-->
+<!--            android:fontFamily="@font/oswald_regular"-->
+<!--            android:background="@drawable/edittext_circular"-->
+<!--            android:text="@string/view_previous_orders" />-->
 
         <Button
             android:id="@+id/editProfile"

@@ -3,11 +3,13 @@ package com.example.canteenapplication;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.telephony.SmsManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -111,6 +113,15 @@ public class Current_Order_Adapter extends RecyclerView.Adapter<Current_Order_Ad
                                 } catch (Exception e){
                                     e.printStackTrace();
                                 }
+
+                                try {
+                                    SmsManager smsManager = SmsManager.getDefault();
+                                    smsManager.sendTextMessage(phone, null, message, null, null);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+
                                 break;
                             }
                         }

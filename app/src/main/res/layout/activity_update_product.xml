@@ -19,7 +19,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="560dp">
+        android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -30,40 +30,5 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/add_product"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/layout_circular"
-            android:text="Add Product"
-            android:backgroundTint="#c0c0c0"
-            android:fontFamily="@font/oswald_regular"
-            android:textSize="13dp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/update_product"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/layout_circular"
-            android:text="Update Product"
-            android:backgroundTint="#c0c0c0"
-            android:fontFamily="@font/oswald_regular"
-            android:textSize="13dp"
-            android:textStyle="bold" />
-    </LinearLayout>
 
 </LinearLayout>

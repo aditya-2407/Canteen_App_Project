@@ -25,7 +25,7 @@ public class Vendor_Side extends AppCompatActivity {
 
         add_product = findViewById(R.id.add_product);
         update_product = findViewById(R.id.update_product);
-        view_menu = findViewById(R.id.view_menu);
+//        view_menu = findViewById(R.id.view_menu);
         vendor_id = findViewById(R.id.welcome_vendor);
         orders = findViewById(R.id.orders);
 
@@ -61,12 +61,12 @@ public class Vendor_Side extends AppCompatActivity {
 
         });
 
-        view_menu.setOnClickListener(v -> {
-
-            Intent intent = new Intent(Vendor_Side.this, View_Menu.class);
-            startActivity(intent);
-
-        });
+//        view_menu.setOnClickListener(v -> {
+//
+//            Intent intent = new Intent(Vendor_Side.this, View_Menu.class);
+//            startActivity(intent);
+//
+//        });
 
         orders.setOnClickListener(v -> {
             Intent intent = new Intent(Vendor_Side.this, Current_Orders.class);
